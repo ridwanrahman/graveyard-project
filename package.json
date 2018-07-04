@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.0.0-rc.11",
+    "dat.gui": "^0.7.2",
+    "stats-js": "^1.0.0-alpha1",
     "three": "^0.94.0",
     "three-collada-loader": "0.0.1",
     "three-orbitcontrols": "^2.1.2",
