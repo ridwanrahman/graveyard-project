@@ -80,20 +80,28 @@
         var container = document.getElementById('container');
         container.appendChild(this.renderer.domElement);
 
+        var step = 0;
+
+        this.controls = new function () {
+            this.rotationSpeed = 0.02;
+            this.bouncingSpeed = 0.03;
+        };
+
+        var gui = new dat.GUI();
+        gui.add(this.controls, 'rotationSpeed', 0, 0.5);
+        gui.add(this.controls, 'bouncingSpeed', 0, 0.5);
+
         this.renderScene();
 
       },
       renderScene: function() {
-        // console.log(55,this.stats);
         this.stats.update();
-        // if(this.stats){
-        // }
 
-        this.cube.rotation.x += 0.02;
-        this.cube.rotation.y += 0.02;
-        this.cube.rotation.z += 0.02;
+        this.cube.rotation.x += this.controls.rotationSpeed;
+        this.cube.rotation.y += this.controls.rotationSpeed;
+        this.cube.rotation.z += this.controls.rotationSpeed;
 
-        this.step += 0.04;
+        this.step += this.controls.bouncingSpeed;
         this.sphere.position.x = 20+( 10*(Math.cos(this.step)));
         this.sphere.position.y = 2 +( 10*Math.abs(Math.sin(this.step)));
 
@@ -124,9 +132,6 @@
     mounted() {
       this.stats=this.initStats();
       this.init();
-      console.log(this.stats.update());
-      console.log(22,this.stats);
-
     },
 }
 </script>
