@@ -20,7 +20,6 @@
     },
     methods: {
       init: function() {
-        console.log("asdfds");
         this.scene = new THREE.Scene();
 
         this.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -72,10 +71,24 @@
         this.camera.position.z = 30;
         this.camera.lookAt(this.scene.position);
 
-        this.spotLight = new THREE.SpotLight( 0xffffff );
-        this.spotLight.position.set( -40, 60, -10 );
-        this.scene.add( this.spotLight );
-        this.spotLight.castShadow = true;
+        // this.spotLight = new THREE.SpotLight( 0xffffff );
+        // this.spotLight.position.set( -40, 60, -10 );
+        // this.scene.add( this.spotLight );
+        // this.spotLight.castShadow = true;
+
+        // this.ambiColor = "#0c0c0c";
+        // this.ambientLight = new THREE.AmbientLight(this.ambiColor);
+        // this.scene.add(this.ambientLight);
+
+        // this.pointColor = "#ccffcc";
+        // this.pointLight = new THREE.PointLight(this.pointColor);
+        // this.pointLight.distance = 100;
+        // this.pointLight.intensity = 2.4;
+        // this.scene.add(this.pointLight);
+
+        this.hemiLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 0.6);
+        this.hemiLight.position.set(0, 500, 0);
+        this.scene.add(this.hemiLight);
 
         var container = document.getElementById('container');
         container.appendChild(this.renderer.domElement);
@@ -85,12 +98,27 @@
         this.controls = new function () {
             this.rotationSpeed = 0.02;
             this.bouncingSpeed = 0.03;
+            this.intensity = 1;
+        };
+        var that=this;
+        var ColorText = function() {
+          this.ambientColor = that.ambiColor;
         };
 
         var gui = new dat.GUI();
+        var text = new ColorText();
         gui.add(this.controls, 'rotationSpeed', 0, 0.5);
         gui.add(this.controls, 'bouncingSpeed', 0, 0.5);
 
+        // gui.add(this.controls, 'intensity', 0.3).onChange((e)=>{
+        //   this.pointLight.intensity = e;
+        // });
+        
+        // gui.addColor(text, 'ambientColor').onChange((e) => {
+        //   var color = new THREE.Color(e)
+        //   this.ambientLight.color = color;
+        // });
+        
         this.renderScene();
 
       },
@@ -117,7 +145,7 @@
 
       initStats: function() {
         this.stats = new Stats();
-        console.log("stats initiated");
+        
         this.stats.setMode(0);
 
         this.stats.domElement.style.position = 'absolute';
