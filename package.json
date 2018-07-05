@@ -14,8 +14,11 @@
     "dat.gui": "^0.7.2",
     "stats-js": "^1.0.0-alpha1",
     "three": "^0.94.0",
+    "three-canvas-renderer": "^2.0.0",
     "three-collada-loader": "0.0.1",
+    "three-orbit-controls": "^82.1.0",
     "three-orbitcontrols": "^2.1.2",
+    "three-trackballcontrols": "0.0.7",
     "vue": "^2.5.11",
     "vue-resource": "^1.5.1"
   },

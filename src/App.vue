@@ -3,7 +3,9 @@
     <!-- <threedconfigurator></threedconfigurator> -->
     <!-- <graveconfigurator></graveconfigurator> -->
     <!-- <graveconfigurator2></graveconfigurator2> -->
-    <prac></prac>
+    <!-- <prac></prac> -->
+    <!-- <chapter4></chapter4> -->
+    <collada></collada>
   </div>
 </template>
 
@@ -12,6 +14,8 @@
   import graveconfigurator from './components/graveconfigurator.vue';
   import graveconfigurator2 from './components/graveconfigurator2.vue';
   import prac from './components/prac.vue';
+  import chapter4 from './components/chapter4.vue';
+  import collada from './components/collada.vue';
 
   export default {
     name: 'app',
@@ -25,6 +29,8 @@
         graveconfigurator: graveconfigurator,
         graveconfigurator2: graveconfigurator2,
         prac: prac,
+        chapter4: chapter4,
+        collada: collada
 
       }
   }
